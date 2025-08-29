@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ShopSmart - Electronics, Fashion, Medicines & Grocery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+  :root {
+    --color-bg: #ffffff;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6b7280;
+    --color-accent: #000000;
+    --border-radius: 0.75rem;
+    --shadow-light: rgba(0,0,0,0.05);
+    --max-width: 1200px;
+    --transition-speed: 0.3s;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: all var(--transition-speed);
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Header and Navigation */
+  header {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-bg);
+    box-shadow: 0 2px 12px var(--shadow-light);
+    z-index: 1000;
+    padding: 1.5rem 0;
+  }
+
+  nav.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    user-select: none;
+    cursor: default;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition-speed), color var(--transition-speed);
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    border-color: var(--color-accent);
+    color: var(--color-text-primary);
+    outline: none;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 8rem 0 6rem 0;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-weight: 800;
+    font-size: 56px;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+
+  .hero p {
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #222222;
+    outline: none;
+    transform: scale(1.05);
+  }
+
+  /* Categories */
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    user-select: none;
+  }
+
+  .category-card {
+    background: #f9fafb;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 18px var(--shadow-light);
+    padding: 2rem 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+    max-width: 160px;
+  }
+
+  .category-card:hover,
+  .category-card:focus {
+    box-shadow: 0 16px 35px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    outline: none;
+  }
+
+  .category-icon {
+    font-size: 48px;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .category-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+  }
+
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+    margin-bottom: 6rem;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 18px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+    cursor: pointer;
+  }
+
+  .product-card:hover,
+  .product-card:focus-visible {
+    box-shadow: 0 16px 38px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    outline: none;
+  }
+
+  .product-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .product-info {
+    padding: 1rem 1.25rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+  }
+
+  .product-description {
+    flex-grow: 1;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .product-price {
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--color-accent);
+  }
+
+  .btn-add-to-cart {
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+  }
+
+  .btn-add-to-cart:hover,
+  .btn-add-to-cart:focus {
+    background-color: #222222;
+    outline: none;
+    transform: scale(1.05);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    border-top: 1px solid var(--shadow-light);
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 36px;
+    }
+    .categories {
+      gap: 1.5rem;
+    }
+    .category-card {
+      max-width: 140px;
+      padding: 1.5rem 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container" role="navigation" aria-label="Primary">
+    <div class="logo" tabindex="0">ShopSmart</div>
+    <div class="nav-links">
+      <a href="#electronics">Electronics</a>
+      <a href="#fashion">Dress</a>
+      <a href="#medicines">Medicines</a>
+      <a href="#grocery">Grocery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero container" role="banner" aria-label="Welcome to ShopSmart">
+  <h1>ShopSmart - Everything You Need, All In One Place</h1>
+  <p>Your one-stop shop for electronics, fashion, medicines, and groceries — quality products delivered fast.</p>
+  <button class="btn-primary" type="button" aria-label="Browse products">Browse Products</button>
+</section>
+
+<section class="categories container" aria-label="Product categories" role="region">
+  <div class="category-card" tabindex="0" onclick="scrollToCategory('electronics')">
+    <div class="category-icon">📱</div>
+    <div class="category-name">Electronics</div>
+  </div>
+  <div class="category-card" tabindex="0" onclick="scrollToCategory('fashion')">
+    <div class="category-icon">👗</div>
+    <div class="category-name">Dress</div>
+  </div>
+  <div class="category-card" tabindex="0" onclick="scrollToCategory('medicines')">
+    <div class="category-icon">💊</div>
+    <div class="category-name">Medicines</div>
+  </div>
+  <div class="category-card" tabindex="0" onclick="scrollToCategory('grocery')">
+    <div class="category-icon">🛒</div>
+    <div class="category-name">Grocery</div>
+  </div>
+</section>
+
+<section class="products-grid container" aria-label="Electronics products" id="electronics">
+  <h2 style="color:var(--color-text-primary);margin-bottom:1rem;">Electronics</h2>
+  <article class="product-card" tabindex="0">
+    <img src="image/picture.jpg" alt="Smartphone" class="product-image" loading="lazy" />
+    <div class="product-info">
+      <h3 class="product-title">Smartphone Model X</h3>
+      <p class="product-description">Latest generation smartphone with 128GB storage and OLED display.</p>
+      <div class="product-price">₹49,999</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Smartphone Model X to cart" onclick="alert('Added Smartphone Model X to cart!')">Add to Cart</button>
+    </div>
+  </article>
+  <article class="product-card" tabindex="0">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Laptop" class="product-image" loading="lazy" />
+    <div class="product-info">
+      <h3 class="product-title">Ultra Laptop Pro</h3>
+      <p class="product-description">Lightweight laptop with powerful performance and long battery life.</p>
+      <div class="product-price">₹89,999</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Ultra Laptop Pro to cart" onclick="alert('Added Ultra Laptop Pro to cart!')">Add to Cart</button>
+    </div>
+  </article>
+</section>
+
+<section class="products-grid container" aria-label="Dress products" id="fashion">
+  <h2 style="color:var(--color-text-primary);margin-bottom:1rem;">Dress</h2>
+  <article class="product-card" tabindex="0">
+    <img src="image/red.webp" alt="Red Dress" class="product-image" loading="lazy" />
+    <div class="product-info">
+      <h3 class="product-title">Elegant Red Dress</h3>
+      <p class="product-description">Perfect for evenings and parties, made with premium fabric.</p>
+      <div class="product-price">₹4,499</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Elegant Red Dress to cart" onclick="alert('Added Elegant Red Dress to cart!')">Add to Cart</button>
+    </div>
+  </article>
+  <article class="product-card" tabindex="0">
+    <img src="image/dress.jpg" alt="Casual Shirt" class="product-image" loading="lazy" />
+    <div class="product-info">
+      <h3 class="product-title">Casual Shirt</h3>
+      <p class="product-description">Comfortable and stylish, suitable for everyday wear.</p>
+      <div class="product-price">₹1,399</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Casual Shirt to cart" onclick="alert('Added Casual Shirt to cart!')">Add to Cart</button>
+    </div>
+  </article>
+</section>
+
+<section class="products-grid container" aria-label="Medicines products" id="medicines">
+  <h2 style="color:var(--color-text-primary);margin-bottom:1rem;">Medicines</h2>
+  <article class="product-card" tabindex="0">
+    <img src="image/vitaminc.jpg" alt="Vitamin C Capsules" class="product-image" loading="lazy"/>
+    <div class="product-info">
+      <h3 class="product-title">Vitamin C Capsules</h3>
+      <p class="product-description">Boost immunity with daily vitamin C supplement.</p>
+      <div class="product-price">₹499</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Vitamin C Capsules to cart" onclick="alert('Added Vitamin C Capsules to cart!')">Add to Cart</button>
+    </div>
+  </article>
+  <article class="product-card" tabindex="0">
+    <img src="image/pain.jpg" alt="Pain Relief Medicine" class="product-image" loading="lazy"/>
+    <div class="product-info">
+      <h3 class="product-title">Pain Relief Medicine</h3>
+      <p class="product-description">Fast-acting relief for headaches and muscle pain.</p>
+      <div class="product-price">₹199</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Pain Relief Medicine to cart" onclick="alert('Added Pain Relief Medicine to cart!')">Add to Cart</button>
+    </div>
+  </article>
+</section>
+
+<section class="products-grid container" aria-label="Grocery products" id="grocery">
+  <h2 style="color:var(--color-text-primary);margin-bottom:1rem;">Grocery</h2>
+  <article class="product-card" tabindex="0">
+    <img src="image/vegitable.jpg" alt="Fresh Vegetables" class="product-image" loading="lazy"/>
+    <div class="product-info">
+      <h3 class="product-title">Fresh Vegetables</h3>
+      <p class="product-description">Farm fresh vegetables sourced locally every day.</p>
+      <div class="product-price">₹299 / kg</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Fresh Vegetables to cart" onclick="alert('Added Fresh Vegetables to cart!')">Add to Cart</button>
+    </div>
+  </article>
+  <article class="product-card" tabindex="0">
+    <img src="image/fruit.jpg" alt="Organic Fresh Fruits" class="product-image" loading="lazy"/>
+    <div class="product-info">
+      <h3 class="product-title">Organic Fresh Fruits</h3>
+      <p class="product-description">Seasonal organic fruits packed with nutrients and flavor.</p>
+      <div class="product-price">₹399 / kg</div>
+      <button class="btn-add-to-cart" type="button" aria-label="Add Organic Fresh Fruits to cart" onclick="alert('Added Organic Fresh Fruits to cart!')">Add to Cart</button>
+    </div>
+  </article>
+</section>
+
+<footer id="contact" aria-label="Contact information">
+  <p>Contact Us: support@shopsmart.com | +91 7765893574</p>
+  <p>© 2025 ShopSmart. All rights reserved.</p>
+</footer>
+
+<script>
+  function scrollToCategory(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.focus();
+    }
+  }
+</script>
+
+</body>
+</html>
+```
+Open this file in your browser for a fully responsive, modern commercial webpage where users can browse and add electronic gadgets, dresses, medicines, and grocery items. The layout uses a sticky top nav, large hero, category cards with icons, and straightforward product cards with images from royalty-free sources, consistent with your design guidelines. The add to cart buttons alert when clicked for demonstration.
+
+Let me know if you'd like me to add shopping cart functionality or checkout flows next!
